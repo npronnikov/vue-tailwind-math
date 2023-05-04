@@ -1,9 +1,9 @@
 <template>
   <header class="w-full bg-white px-3 py-3">
     <p>
-      <i class="fa fa-calculator fa-xl text-green-500"></i>
+      <i class="fa fa-calculator fa-xl text-slate-700"></i>
       <strong class="text-xl inline-block mb-8 ml-3">
-        <span class="text-green-500  title"> УМНОЖАРИК </span>
+        <span class="text-slate-700  title"> УМНОЖАРИК </span>
       </strong>
     </p>
   </header>

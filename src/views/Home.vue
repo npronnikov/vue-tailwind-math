@@ -1,6 +1,6 @@
 <template>
 		<section class="section">
-			<p class="mb-5 text-justify">
+			<p class="mb-5 text-justify text-slate-800">
         <b>Умножарик</b> - это простая игра для тренировки таблицы умножения.
         Правила простые: выбирайте уровень сложности, нажимайте на кнопку старт и выбирайте правильный вариант ответа.
 			</p>
@@ -9,6 +9,7 @@
 				<span class="mx-2">Github</span>
 			</a>
 		</section>
+  <Game/>
 </template>
 
 <script setup>
@@ -16,6 +17,7 @@
 	// import { useRouter } from 'vue-router'
 	// import Pill from '@/components/Pill.vue'
 	import Footer from '@/components/Footer.vue'
+  import Game from "../components/Game.vue";
   //
 	// const count = useCount()
 	// const router = useRouter()
