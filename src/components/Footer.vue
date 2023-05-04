@@ -1,12 +1,13 @@
 <template>
-	<footer class="mt-16 text-center">
-		<p>
-			Created by 
-			<a class="text-blue-500 font-medium" href="https://github.com/or-abdillh" target="_blank" >Oka R. Abdillah</a>
-		</p>
-		<small>
-			Made with <i class="fa fa-heart text-pink-500"></i>
-			and a cup of <i class="fas fa-mug-hot text-red-600"></i>
-		</small>
-	</footer>
+<!--	<footer class="mt-16 text-center">-->
+<!--		<p>-->
+<!--      <i class="fa fa-heart text-pink-500 fa-lg"></i><br/>-->
+<!--      Специально для Дарины-->
+<!--		</p>-->
+<!--	</footer>-->
+
+  <footer class="absolute bottom-0 w-full px-6 py-6 text-white bg-emerald-500">
+    tetx
+  </footer>
+
 </template>
