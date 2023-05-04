@@ -1,9 +1,5 @@
 <template>
-	<main>
 		<section class="section">
-			<strong class="text-3xl inline-block mb-8">
-				<span class="text-pink-500"> Умножарик </span>
-      </strong>
 			<p class="mb-5 text-justify">
         <b>Умножарик</b> - это простая игра для тренировки таблицы умножения.
         Правила простые: выбирайте уровень сложности, нажимайте на кнопку старт и выбирайте правильный вариант ответа.
@@ -13,8 +9,6 @@
 				<span class="mx-2">Github</span>
 			</a>
 		</section>
-<!--		<Footer />-->
-	</main>
 </template>
 
 <script setup>
