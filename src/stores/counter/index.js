@@ -3,15 +3,20 @@ import { defineStore } from 'pinia'
 export const useCount = defineStore('counter', {
 	state: () => {
 		return {
-			count: 0
+			correctAnswers: 0,
+			incorrectAnswers: 0
 		}
 	},
 	actions: {
-		click() {
-			this.count++
+		correctAnswer() {
+			this.correctAnswers ++
 		},
-		doubleClick() {
-			this.count = this.count * 2
+		incorrectAnswer() {
+			this.incorrectAnswers ++
+		},
+		reset() {
+			this.correctAnswers = 0
+			this.incorrectAnswers = 0
 		}
 	}
 })

@@ -1,15 +1,14 @@
 <template>
   <section class="section flex flex-col items-center gap-3">
-  сколько будет
+  Сколько будет
   <h1 class="text-5xl font-medium">{{ left }} * {{ right }} = ?</h1>
   <div class="flex gap-4 mt-3">
-    <button @click="verify(variants[0])" class="btn-count">{{variants[0]}}</button>
-    <button @click="verify(variants[1])" class="btn-count">{{variants[1]}}</button>
-    <button @click="verify(variants[2])" class="btn-count">{{variants[2]}}</button>
-    <button @click="verify(variants[3])" class="btn-count">{{variants[3]}}</button>
-    <button @click="verify(variants[4])" class="btn-count">{{variants[4]}}</button>
+    <button @click="verify(variants[0])" class="btn-variant">{{variants[0]}}</button>
+    <button @click="verify(variants[1])" class="btn-variant">{{variants[1]}}</button>
+    <button @click="verify(variants[2])" class="btn-variant">{{variants[2]}}</button>
+    <button @click="verify(variants[3])" class="btn-variant">{{variants[3]}}</button>
+    <button @click="verify(variants[4])" class="btn-variant">{{variants[4]}}</button>
   </div>
-    <Modal/>
   </section>
 </template>
 
@@ -18,22 +17,18 @@
   @apply w-full bg-gray-50 py-8 px-5 rounded mb-8;
 }
 
-.btn-count {
-  @apply px-4 py-4 bg-indigo-400 text-gray-50 rounded variant;
+.btn-variant {
+  /*@apply bg-indigo-400 hover:bg-indigo-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center text-gray-50 rounded variant*/
+  @apply px-4 py-4 bg-indigo-400 text-gray-50 rounded btn_width hover:bg-indigo-700;
 }
-.variant {
+.btn_width {
   min-width: 3.5em;
 }
 </style>
 <script setup>
 import { useCount } from '@/stores/counter'
-import Modal from "./Modal.vue";
-// import { useRouter } from 'vue-router'
-
 const count = useCount()
 const level = 9
-// const router = useRouter()
-// const movePage = to => router.push({ name: to })
 
 </script>
 
@@ -71,9 +66,9 @@ export default {
     },
     verify(answer){
       if(answer == this.left * this.right){
-
+        this.count.correctAnswer()
       } else {
-
+        this.count.incorrectAnswer()
       }
       this.newExpression()
     }
