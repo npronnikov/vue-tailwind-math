@@ -46,7 +46,7 @@ export default {
     },
     newExpression(){
       this.left = this.randomInt(this.level.difficulty)
-      this.right = this.randomInt(this.level.difficulty)
+      this.right = this.randomInt(9)
       let correctAnswer = this.left * this.right
       // console.log('correct answer is ' + correctAnswer)
       let rightIndex = this.randomInt(this.level.options) - 1
