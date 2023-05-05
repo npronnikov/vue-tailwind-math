@@ -4,8 +4,10 @@
 </script>
 
 <template>
-	<small @click="router.go(-1)" class="text-green-500">
+  <div class="mb-3">
+	<small @click="router.go(-1)" class="text-stone-500">
 		<i class="fa fa-chevron-left"></i>
-		Back
+		 Взад к правилам
 	</small>
+    </div>
 </template>
