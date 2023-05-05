@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen flex-col">
    <Header/>
-    <main class="app">
+    <main class="app-data">
       <router-view></router-view>
     </main>
     <Footer/>
@@ -14,7 +14,7 @@
 </script>
 
 <style scoped>
-	.app {
-		@apply p-5 w-full h-screen md:w-6/12 lg:w-5/12 md:mx-auto xl:w-4/12
+	.app-data {
+		@apply p-5 w-full h-screen md:w-7/12 lg:w-6/12 md:mx-auto xl:w-5/12
 	}
 </style>

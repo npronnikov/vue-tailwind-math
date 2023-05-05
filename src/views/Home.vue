@@ -4,7 +4,9 @@
       <b>Умножарик</b> - это простая игра для тренировки таблицы умножения.
       Правила простые: выбирайте уровень сложности, нажимайте на кнопку старт и выбирайте правильный вариант ответа.
     </p>
-    <button v-for="i in 9" :key="i" class="btn_level" :class="{ btn_level_selected: i==level.difficulty }" @click="setLevel(i)">{{i}}</button>
+    <div class="text-center">
+      <button v-for="i in 9" :key="i" class="btn_level" :class="{ btn_level_selected: i==level.difficulty }" @click="setLevel(i)">{{i}}</button>
+    </div>
   </section>
   <div class="text-center">
     <button @click="start" class="btn_start">Старт!</button>
