@@ -9,7 +9,11 @@
   </section>
 </template>
 
-
+<style scoped>
+.btn-count {
+  @apply px-3 py-1 bg-indigo-400 text-gray-50 rounded;
+}
+</style>
 <script setup>
 import { useCount } from '@/stores/counter'
 // import { useRouter } from 'vue-router'
