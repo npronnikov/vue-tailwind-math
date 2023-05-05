@@ -6,7 +6,7 @@
   </span>
 </template>
 <script setup>
-	import Count from '@/components/Count.vue'
-	import Equasion from '@/components/Equasion.vue'
-	import BackBtn from '@/components/BackBtn.vue'
+	import Count from '../components/Count.vue'
+	import Equasion from '../components/Equasion.vue'
+	import BackBtn from '../components/BackBtn.vue'
 </script>

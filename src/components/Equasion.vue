@@ -1,9 +1,9 @@
 <template>
   <section class="section flex flex-col items-center gap-3">
   Сколько будет
-  <h1 class="text-5xl font-medium">{{ left }} * {{ right }} = ?</h1>
+  <h1 class="text-5xl font-medium">{{ operands.left }} * {{ operands.right }} = ?</h1>
   <div class="flex gap-4 mt-3">
-    <button v-for="(e, index) in variants" :key="index"
+    <button v-for="(e, index) in answer.options" :key="index"
             @click="verify(e)" class="btn-variant">{{e}}</button>
   </div>
   </section>
@@ -23,14 +23,52 @@
 }
 </style>
 <script setup>
-import { useCount } from '@/stores/counter'
+import { useCount } from '../stores/counter'
 import {useLevel} from "../stores/level";
+import {reactive} from "vue";
 const count = useCount()
 const level = useLevel()
+const operands = reactive({left: 0, right:0})
+const answer = reactive({options:[]})
 
+function randomInt(max) {
+  return 1 + Math.floor(Math.random() * max);
+}
+
+function newExpression(){
+  operands.left = randomInt(level.difficulty)
+  operands.right = randomInt(9)
+  let correctAnswer = operands.left * operands.right
+  let rightIndex = randomInt(level.options) - 1
+  answer.options = randomize(level.options, correctAnswer)
+  answer.options[rightIndex] = correctAnswer
+}
+function randomize(length, correctAnswer) {
+  let array = []
+  while (array.length < length){
+    let incorrectAnswer = level.difficulty > 0 ? randomInt(level.difficulty*10) : randomInt(90)
+    if(!array.includes(incorrectAnswer) && correctAnswer != incorrectAnswer){
+      array.push(incorrectAnswer)
+    }
+  }
+  return array;
+}
+
+function verify(answer){
+  if(answer == operands.left * operands.right){
+    count.correctAnswer()
+  } else {
+    count.incorrectAnswer()
+  }
+  newExpression()
+}
+
+//init
+newExpression()
 
 </script>
 
+<!--
 <script>
 export default {
   data() {
@@ -80,3 +118,4 @@ export default {
 
 }
 </script>
+-->

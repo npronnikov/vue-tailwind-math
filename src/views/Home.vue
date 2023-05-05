@@ -11,28 +11,42 @@
   <div class="text-center">
     <button @click="start" class="btn_start">Старт!</button>
   </div>
-  <Modal :display="showModal" @close="showModal = false"/>
+  <Modal :display="modal.show" @close="modal.show = false"/>
 </template>
 
 <script setup>
-import {useLevel} from "../stores/level";
-import { useRouter } from 'vue-router'
-import Modal from "../components/Modal.vue";
-const level = useLevel()
-const router = useRouter()
+  import { reactive } from 'vue'
+  import { useLevel } from "../stores/level";
+  import { useRouter } from 'vue-router'
+  import Modal from "../components/Modal.vue";
+  const level = useLevel()
+  const router = useRouter()
+  const modal = reactive({show: false})
+  function setLevel(l){
+    level.difficulty = l
+  }
+  function start() {
+    if(level.difficulty == 0){
+      modal.show = true
+    } else {
+      router.push({path:'/game'})
+    }
+  }
+
+
 </script>
 
-
+<!--
 <script>
 export default {
   data(){
     return {
-      showModal: false
+      showModal: false,
     }
   },
   methods: {
     setLevel(l){
-      this.level.setDifficulty(l)
+      level.setDifficulty(l)
     },
     start() {
       if(this.level.difficulty == 0){
@@ -44,7 +58,7 @@ export default {
   }
 }
 </script>
-
+-->
 
 <style scoped>
 .section {

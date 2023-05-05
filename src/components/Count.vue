@@ -26,7 +26,7 @@
 }
 </style>
 <script setup>
-import { useCount } from '@/stores/counter'
+import { useCount } from '../stores/counter'
 import {useLevel} from "../stores/level";
 const count = useCount()
 const level = useLevel()
