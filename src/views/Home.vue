@@ -66,14 +66,14 @@ export default {
 }
 
 .btn_level {
-  @apply px-2 py-2 ml-1 bg-indigo-400 text-gray-50 rounded hover:bg-indigo-700; min-width: 2.5em;
+  @apply px-2 py-2 ml-1 mt-1 bg-indigo-400 text-gray-50 rounded hover:bg-indigo-700; min-width: 2.5em;
 }
 
 .btn_level_selected {
   @apply bg-indigo-800
 }
 .btn_start {
-  @apply w-72 h-72 rounded-full bg-indigo-400 hover:bg-indigo-700 text-white text-4xl;
+  @apply w-32 h-32 rounded-full bg-indigo-400 hover:bg-indigo-700 text-white text-3xl;
 }
 </style>
 

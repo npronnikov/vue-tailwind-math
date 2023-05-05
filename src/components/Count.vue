@@ -30,22 +30,7 @@ import { useCount } from '../stores/counter'
 import {useLevel} from "../stores/level";
 const count = useCount()
 const level = useLevel()
-
-</script>
-
-<script>
-export default {
-  data() {
-    return {
-    }
-  },
-  methods: {
-    reset(){
-      this.count.reset();
-    }
-  },
-  mounted() {
-  }
-
+function reset(){
+  count.reset();
 }
 </script>

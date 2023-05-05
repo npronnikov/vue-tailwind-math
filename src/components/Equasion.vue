@@ -16,10 +16,10 @@
 
 .btn-variant {
   /*@apply bg-indigo-400 hover:bg-indigo-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center text-gray-50 rounded variant*/
-  @apply px-4 py-4 bg-indigo-400 text-gray-50 rounded btn_width hover:bg-indigo-700;
+  @apply px-2 py-2 bg-indigo-400 text-gray-50 rounded btn_width hover:bg-indigo-700 focus:bg-indigo-400 ;
 }
 .btn_width {
-  min-width: 3.5em;
+  min-width: 2.5em;
 }
 </style>
 <script setup>
