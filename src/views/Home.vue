@@ -1,36 +1,63 @@
 <template>
-		<section class="section">
-			<p class="mb-5 text-justify text-slate-800">
-        <b>Умножарик</b> - это простая игра для тренировки таблицы умножения.
-        Правила простые: выбирайте уровень сложности, нажимайте на кнопку старт и выбирайте правильный вариант ответа.
-			</p>
-			<a href="/game" class="bg-gray-600 hover:bg-opacity-75 focus:ring-2 text-gray-50 px-5 py-2 rounded-lg inline-block">
-				<i class="fab fa-game"></i>
-				<span class="mx-2">Погнали!</span>
-			</a>
-		</section>
+  <section class="section">
+    <p class="mb-5 text-justify text-slate-800">
+      <b>Умножарик</b> - это простая игра для тренировки таблицы умножения.
+      Правила простые: выбирайте уровень сложности, нажимайте на кнопку старт и выбирайте правильный вариант ответа.
+    </p>
+    <button v-for="i in 9" :key="i" class="btn_level" :class="{ btn_level_selected: i==level.difficulty }" @click="setLevel(i)">{{i}}</button>
+  </section>
+  <div class="text-center">
+    <button @click="start" class="btn_start">Старт!</button>
+  </div>
+  <Modal :display="showModal" @close="showModal = false"/>
 </template>
 
 <script setup>
-	// import { useCount } from '@/stores/counter'
-	// import { useRouter } from 'vue-router'
-	// import Pill from '@/components/Pill.vue'
-	// import Footer from '@/components/Footer.vue'
-  // import Game from "../components/Game.vue";
-  //
-	// const count = useCount()
-	// const router = useRouter()
-  //
-	// const movePage = to => router.push({ name: to })
-  //
-	//
-
-
+import {useLevel} from "../stores/level";
+import { useRouter } from 'vue-router'
+import Modal from "../components/Modal.vue";
+const level = useLevel()
+const router = useRouter()
 </script>
 
-<style scoped>
-	.section {
-		@apply w-full bg-gray-50 py-8 px-5 rounded mb-8;
-	}
 
+<script>
+export default {
+  data(){
+    return {
+      showModal: false
+    }
+  },
+  methods: {
+    setLevel(l){
+      this.level.setDifficulty(l)
+    },
+    start() {
+      if(this.level.difficulty == 0){
+        this.showModal = true
+      } else {
+        this.router.push({path:'/game'})
+      }
+    }
+  }
+}
+</script>
+
+
+<style scoped>
+.section {
+  @apply w-full bg-gray-50 py-8 px-5 rounded mb-8;
+}
+
+.btn_level {
+  @apply px-2 py-2 ml-1 bg-indigo-400 text-gray-50 rounded hover:bg-indigo-700; min-width: 2.5em;
+}
+
+.btn_level_selected {
+  @apply bg-indigo-800
+}
+.btn_start {
+  @apply w-72 h-72 rounded-full bg-indigo-400 hover:bg-indigo-700 text-white text-4xl;
+}
 </style>
+

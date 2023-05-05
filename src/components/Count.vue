@@ -1,6 +1,6 @@
 <template>
   <section class="section flex flex-col items-center gap-3">
-    <h1 class="text-1xl font-medium">Счет</h1>
+    <h1 class="text-1xl font-medium">Уровень {{level.difficulty}}</h1>
     <div class="container mx-auto">
       <div class="grid grid-cols-12 gap-1">
         <div class="col-span-6 md:col-span-6 text-center">
@@ -27,7 +27,10 @@
 </style>
 <script setup>
 import { useCount } from '@/stores/counter'
+import {useLevel} from "../stores/level";
 const count = useCount()
+const level = useLevel()
+
 </script>
 
 <script>

@@ -3,11 +3,8 @@
   Сколько будет
   <h1 class="text-5xl font-medium">{{ left }} * {{ right }} = ?</h1>
   <div class="flex gap-4 mt-3">
-    <button @click="verify(variants[0])" class="btn-variant">{{variants[0]}}</button>
-    <button @click="verify(variants[1])" class="btn-variant">{{variants[1]}}</button>
-    <button @click="verify(variants[2])" class="btn-variant">{{variants[2]}}</button>
-    <button @click="verify(variants[3])" class="btn-variant">{{variants[3]}}</button>
-    <button @click="verify(variants[4])" class="btn-variant">{{variants[4]}}</button>
+    <button v-for="(e, index) in variants" :key="index"
+            @click="verify(e)" class="btn-variant">{{e}}</button>
   </div>
   </section>
 </template>
@@ -27,8 +24,10 @@
 </style>
 <script setup>
 import { useCount } from '@/stores/counter'
+import {useLevel} from "../stores/level";
 const count = useCount()
-const level = 9
+const level = useLevel()
+
 
 </script>
 
@@ -46,17 +45,19 @@ export default {
       return 1 + Math.floor(Math.random() * max);
     },
     newExpression(){
-      this.left = this.randomInt(this.level)
-      this.right = this.randomInt(this.level)
+      this.left = this.randomInt(this.level.difficulty)
+      this.right = this.randomInt(this.level.difficulty)
       let correctAnswer = this.left * this.right
-      let rightIndex = this.randomInt(6) - 1
-      this.variants = this.randomize(6, correctAnswer)
+      // console.log('correct answer is ' + correctAnswer)
+      let rightIndex = this.randomInt(this.level.options) - 1
+      this.variants = this.randomize(this.level.options, correctAnswer)
+      // console.log('set answer to index ' + rightIndex)
       this.variants[rightIndex] = correctAnswer
     },
     randomize(length, correctAnswer) {
       let array = []
       while (array.length < length){
-        let incorrectAnswer = this.randomInt(90)
+        let incorrectAnswer = this.level.difficulty > 0 ? this.randomInt(this.level.difficulty*10) : this.randomInt(90)
         if(!array.includes(incorrectAnswer) && correctAnswer != incorrectAnswer){
           array.push(incorrectAnswer)
         }
