@@ -32,12 +32,14 @@ const operands = reactive({left: 0, right:0})
 const answer = reactive({options:[]})
 
 function randomInt(max) {
-  return 2 + Math.floor(Math.random() * max);
+  return 1 + Math.floor(Math.random() * max);
 }
 
 function newExpression(){
   operands.left = randomInt(level.difficulty)
   operands.right = randomInt(9)
+  if(operands.left ==1) operands.left ++ //escape 1 in equasion
+  if(operands.right ==1) operands.right ++ //escape 1 in equasion
   let correctAnswer = operands.left * operands.right
   let rightIndex = randomInt(level.options) - 1
   answer.options = randomize(level.options, correctAnswer)

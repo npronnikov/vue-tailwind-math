@@ -11,7 +11,7 @@
   <div class="text-center">
     <button @click="start" class="btn_start">Старт!</button>
   </div>
-  <Modal :display="modal.show" @close="modal.show = false"/>
+  <Modal :display="modal.show" title="Ошибка" type="error" message="Вам необходимо задать уровень перед стартом игры" @close="modal.show = false"/>
 </template>
 
 <script setup>

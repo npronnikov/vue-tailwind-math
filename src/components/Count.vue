@@ -2,7 +2,7 @@
 <!--  Уровень {{level.difficulty}}-->
   <section class="section flex flex-col items-center gap-3">
     <div class="text-left">Уровень {{level.difficulty}}</div>
-    <h1 class="text-2xl font-thin">{{smartTime(timer.minutes)}}:{{smartTime(timer.seconds)}}</h1>
+<!--    <h1 class="text-2xl font-thin">{{smartTime(timer.minutes)}}:{{smartTime(timer.seconds)}}</h1>-->
     <div class="container mx-auto">
       <div class="grid grid-cols-12 gap-1">
         <div class="col-span-6 md:col-span-6 text-center">
@@ -28,37 +28,11 @@
 }
 </style>
 <script setup>
+
 import { useCount } from '../stores/counter'
-import {useLevel} from "../stores/level";
-import {reactive} from "vue";
+import { useLevel } from "../stores/level";
+
 const count = useCount()
 const level = useLevel()
-const timer = reactive({seconds:0, minutes:0, func: undefined})
-
-function startTimer(){
-  timer.func = setInterval(()=>{
-    timer.seconds ++
-    if(timer.seconds == 60){
-      timer.seconds = 0
-      timer.minutes ++
-    }
-  }, 1000)
-}
-function stopTimer(){
-  timer.minutes = 0
-  timer.seconds = 0
-  clearInterval(timer.func)
-}
-
-function reset(){
-  count.reset()
-  stopTimer()
-  startTimer()
-}
-function smartTime(time) {
-  return time < 10 ? "0" + time.toString().trim() : time;
-}
-startTimer()
-
 
 </script>
