@@ -5,7 +5,7 @@
       Правила простые: выбирайте уровень сложности, нажимайте на кнопку старт и выбирайте правильный вариант ответа.
     </p>
     <div class="text-center">
-      <button v-for="i in 9" :key="i" class="btn_level" :class="{ btn_level_selected: i==level.difficulty }" @click="setLevel(i)">{{i}}</button>
+      <button v-for="i in 8" :key="i" class="btn_level" :class="{ btn_level_selected: i==level.difficulty-1 }" @click="setLevel(i+1)">{{i+1}}</button>
     </div>
   </section>
   <div class="text-center">

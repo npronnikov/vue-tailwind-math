@@ -32,7 +32,7 @@ const operands = reactive({left: 0, right:0})
 const answer = reactive({options:[]})
 
 function randomInt(max) {
-  return 1 + Math.floor(Math.random() * max);
+  return 2 + Math.floor(Math.random() * max);
 }
 
 function newExpression(){
