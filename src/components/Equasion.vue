@@ -7,6 +7,7 @@
             @click="verify(e)" class="btn-variant">{{e}}</button>
   </div>
   </section>
+  <Modal :display="modal.show" title="Уровень пройден" type="info" :message="'Поздравляю, уровень пройден. Затраченное время ' + smartTime(timer.minutes) + ' : ' + smartTime(timer.seconds)" @close="modal.show = false"/>
 </template>
 
 <style scoped>
@@ -23,6 +24,7 @@
 }
 </style>
 <script setup>
+import Modal from "../components/Modal.vue";
 import { useCount } from '../stores/counter'
 import {useLevel} from "../stores/level";
 import {reactive} from "vue";
@@ -30,6 +32,8 @@ const count = useCount()
 const level = useLevel()
 const operands = reactive({left: 0, right:0})
 const answer = reactive({options:[]})
+const timer = reactive({seconds:0, minutes:0, func: undefined})
+const modal = reactive({show: false})
 
 function randomInt(max) {
   return 1 + Math.floor(Math.random() * max);
@@ -56,14 +60,40 @@ function randomize(length, correctAnswer) {
   return array;
 }
 
+function startTimer(){
+  timer.minutes = 0
+  timer.seconds = 0
+  timer.func = setInterval(()=>{
+    timer.seconds ++
+    if(timer.seconds == 60){
+      timer.seconds = 0
+      timer.minutes ++
+    }
+  }, 1000)
+}
+function stopTimer(){
+  clearInterval(timer.func)
+}
+
+function smartTime(time) {
+  return time < 10 ? "0" + time.toString().trim() : time;
+}
+
 function verify(answer){
+  if(!timer.func) startTimer()
   if(answer == operands.left * operands.right){
     count.correctAnswer()
   } else {
     count.incorrectAnswer()
   }
+  console.log((count.correctAnswers - count.incorrectAnswers) + ' vs ' + level.tries)
+  if( (count.correctAnswers - count.incorrectAnswers) == level.tries) {
+    stopTimer()
+    modal.show = true
+  }
   newExpression()
 }
+
 
 //init
 newExpression()

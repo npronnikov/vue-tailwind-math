@@ -5,7 +5,7 @@ export const useLevel = defineStore('level', {
 		return {
 			difficulty: 0,
 			options: 6, //число вариантов ответов
-			tries: 10
+			tries: 100
 		}
 	},
 	actions: {

@@ -35,4 +35,8 @@ import { useLevel } from "../stores/level";
 const count = useCount()
 const level = useLevel()
 
+function reset(){
+  count.reset()
+}
+
 </script>
